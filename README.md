@@ -16,19 +16,19 @@ where:
 ## Visualization
 The sample audio isn't provided because it is generated from [WSJ0](https://catalog.ldc.upenn.edu/LDC93S6A).
 ### Waveform
-![mixture_waveform](https://github.com/SXKA/Conv-TasNet-visualization/blob/master/png/mixture_waveform.png)
-![spk1_waveform](https://github.com/SXKA/Conv-TasNet-visualization/blob/master/png/spk1_waveform.png)
-![spk2_waveform](https://github.com/SXKA/Conv-TasNet-visualization/blob/master/png/spk2_waveform.png)
+![mixture_waveform](https://github.com/SXKA/conv-tasnet-visualization/blob/master/png/mixture_waveform.png)
+![spk1_waveform](https://github.com/SXKA/conv-tasnet-visualization/blob/master/png/spk1_waveform.png)
+![spk2_waveform](https://github.com/SXKA/conv-tasnet-visualization/blob/master/png/spk2_waveform.png)
 ### Encoder and decoder basis functions
 <div align="center">
-  <img src="https://github.com/SXKA/Conv-TasNet-visualization/blob/master/png/encoder_weights.png" alt="encoder_weights" width="400" height="800" />&nbsp;
-  <img src="https://github.com/SXKA/Conv-TasNet-visualization/blob/master/png/encoder_weights_fft.png" alt="encoder_weights_fft" width="400" height="800" />
-  <img src="https://github.com/SXKA/Conv-TasNet-visualization/blob/master/png/decoder_weights.png" alt="decoder_weights" width="400" height="800" />&nbsp;
-  <img src="https://github.com/SXKA/Conv-TasNet-visualization/blob/master/png/decoder_weights_fft.png" alt="decoder_weights_fft" width="400" height="800" />
+  <img src="https://github.com/SXKA/conv-tasnet-visualization/blob/master/png/encoder_weights.png" alt="encoder_weights" width="400" height="800" />&nbsp;
+  <img src="https://github.com/SXKA/conv-tasnet-visualization/blob/master/png/encoder_weights_fft.png" alt="encoder_weights_fft" width="400" height="800" />
+  <img src="https://github.com/SXKA/conv-tasnet-visualization/blob/master/png/decoder_weights.png" alt="decoder_weights" width="400" height="800" />&nbsp;
+  <img src="https://github.com/SXKA/conv-tasnet-visualization/blob/master/png/decoder_weights_fft.png" alt="decoder_weights_fft" width="400" height="800" />
 </div>
 
 ### Encoder representation
-![encoder_output](https://github.com/SXKA/Conv-TasNet-visualization/blob/master/png/encoder_output.png)
+![encoder_output](https://github.com/SXKA/conv-tasnet-visualization/blob/master/png/encoder_output.png)
 ### Source masks
-![spk1_mask](https://github.com/SXKA/Conv-TasNet-visualization/blob/master/png/spk1_mask.png)
-![spk2_mask](https://github.com/SXKA/Conv-TasNet-visualization/blob/master/png/spk2_mask.png)
+![spk1_mask](https://github.com/SXKA/conv-tasnet-visualization/blob/master/png/spk1_mask.png)
+![spk2_mask](https://github.com/SXKA/conv-tasnet-visualization/blob/master/png/spk2_mask.png)
