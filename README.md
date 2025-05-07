@@ -12,11 +12,10 @@ python main.py \
   --spk1_path path/to/spk1_audio \
   --spk2_path path/to/spk2_audio
 ```
-where:
-- ``--model_path`` is Conv-TasNet model path.
-- ``--mixture_path`` is mixture audio file path.
-- ``--spk1_path`` is speaker 1 audio file path.
-- ``--spk2_path`` is speaker 2 audio file path.
+- ``--model_path``: Conv-TasNet model path.
+- ``--mixture_path``: mixture audio file path.
+- ``--spk1_path``: speaker 1 audio file path.
+- ``--spk2_path``: speaker 2 audio file path.
 ## Visualization
 The sample audio isn't provided because it is generated from [WSJ0](https://catalog.ldc.upenn.edu/LDC93S6A).
 ### Waveform
