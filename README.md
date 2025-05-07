@@ -1,4 +1,4 @@
-# Conv-TasNet-visualization
+# conv-tasnet-visualization
 A implementation of [Conv-TasNet](https://arxiv.org/abs/1809.07454) visualization.
 
 [Conv-TasNet-visualization](https://github.com/SXKA/Conv-TasNet-visualization) use [Asteroid](https://github.com/asteroid-team/asteroid) model.
