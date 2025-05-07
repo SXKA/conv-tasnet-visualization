@@ -1,7 +1,7 @@
 # conv-tasnet-visualization
 A implementation of [Conv-TasNet](https://arxiv.org/abs/1809.07454) visualization.
 
-[Conv-TasNet-visualization](https://github.com/SXKA/Conv-TasNet-visualization) use [Asteroid](https://github.com/asteroid-team/asteroid) model.
+[conv-tasnet-visualization](https://github.com/SXKA/conv-tasnet-visualization) use [Asteroid](https://github.com/asteroid-team/asteroid) model.
 
 The images of visualization are produced with [JorisCos/ConvTasNet_Libri2Mix_sepclean_8k](https://huggingface.co/JorisCos/ConvTasNet_Libri2Mix_sepclean_8k).
 ## Usage
