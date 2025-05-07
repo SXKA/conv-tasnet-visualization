@@ -6,7 +6,7 @@ A implementation of [Conv-TasNet](https://arxiv.org/abs/1809.07454) visualizatio
 The images of visualization are produced with [JorisCos/ConvTasNet_Libri2Mix_sepclean_8k](https://huggingface.co/JorisCos/ConvTasNet_Libri2Mix_sepclean_8k).
 ## Usage
 ```powershell
-python visualization.py --model_path conv_tasnet_model_path --mixture_path mixture_audio_path --spk1_path spk1_audio_path --spk2_path spk2_audio_path
+python main.py --model_path conv_tasnet_model_path --mixture_path mixture_audio_path --spk1_path spk1_audio_path --spk2_path spk2_audio_path
 ```
 where:
 - ``--model_path`` is Conv-TasNet model path.
