@@ -26,9 +26,7 @@ def main(args: Namespace):
 
     encoder_state_dict = model.encoder.state_dict()
     encoder_weights = encoder_state_dict["filterbank._filters"].cpu().numpy().squeeze()
-    z = linkage(
-        encoder_weights, method="average", metric="euclidean", optimal_ordering=True
-    )
+    z = linkage(encoder_weights, method="average", metric="euclidean", optimal_ordering=True)
     sorted_indices = leaves_list(z)
     encoder_weights = encoder_weights[sorted_indices]
 
@@ -49,9 +47,7 @@ def main(args: Namespace):
     # A stereo file has shape (2, time) and was fed to the model as a batch of
     # two mixtures; the speaker references are mono, so downmix it too.
     mixture = to_mono(mixture)
-    mixture = torchaudio.functional.resample(
-        mixture, orig_freq=sr, new_freq=sample_rate
-    )
+    mixture = torchaudio.functional.resample(mixture, orig_freq=sr, new_freq=sample_rate)
 
     # Resampling can leave the three signals a few samples apart, which breaks the
     # element-wise comparison of their encoder outputs below.
@@ -84,12 +80,8 @@ def main(args: Namespace):
     encoder_spk1_output_numpy = encoder_spk1_output.cpu().numpy()
     encoder_spk2_output_numpy = encoder_spk2_output.cpu().numpy()
     power_coef = np.ones_like(encoder_spk1_output_numpy)
-    power_coef[
-        np.abs(encoder_spk1_output_numpy) > np.abs(encoder_spk2_output_numpy)
-    ] = -1
-    power_coef[
-        np.isclose(np.abs(encoder_spk1_output_numpy), np.abs(encoder_spk2_output_numpy))
-    ] = 0
+    power_coef[np.abs(encoder_spk1_output_numpy) > np.abs(encoder_spk2_output_numpy)] = -1
+    power_coef[np.isclose(np.abs(encoder_spk1_output_numpy), np.abs(encoder_spk2_output_numpy))] = 0
 
     encoder_output_numpy = power_coef * np.abs(encoder_output_numpy)
 
@@ -106,9 +98,7 @@ def main(args: Namespace):
         (0, encoder_output_numpy.shape[1] - 1),
         (0, int(1000 * mixture.shape[1] / sample_rate)),
     )
-    ax.set_yticks(
-        (0, encoder_output_numpy.shape[0] - 1), (encoder_output_numpy.shape[0], 1)
-    )
+    ax.set_yticks((0, encoder_output_numpy.shape[0] - 1), (encoder_output_numpy.shape[0], 1))
     ax.set_title("Encoder output")
     ax.get_figure().savefig("encoder_output.png", bbox_inches="tight")
 
@@ -153,9 +143,7 @@ def main(args: Namespace):
 
     decoder_state_dict = model.decoder.state_dict()
     decoder_weights = decoder_state_dict["filterbank._filters"].squeeze().cpu().numpy()
-    z = linkage(
-        decoder_weights, method="average", metric="euclidean", optimal_ordering=True
-    )
+    z = linkage(decoder_weights, method="average", metric="euclidean", optimal_ordering=True)
     sorted_indices = leaves_list(z)
     decoder_weights = decoder_weights[sorted_indices]
 
@@ -251,9 +239,7 @@ def weightsfftplot(weights: np.ndarray, sample_rate: int) -> Axes:
     freq = (rfftfreq(weights.shape[1]) * sample_rate / 1000).astype(int)
 
     weights_fft = np.abs(rfft(weights, axis=1))
-    z = linkage(
-        weights_fft, method="average", metric="euclidean", optimal_ordering=True
-    )
+    z = linkage(weights_fft, method="average", metric="euclidean", optimal_ordering=True)
     sorted_indices = leaves_list(z)
     weights_fft = weights_fft[sorted_indices]
     ax = isns.imgplot(
@@ -285,10 +271,6 @@ if __name__ == "__main__":
         default="mixture.wav",
         help="Mixture audio file path",
     )
-    parser.add_argument(
-        "--spk1_path", type=str, default="spk1.wav", help="Speaker 1 audio file path"
-    )
-    parser.add_argument(
-        "--spk2_path", type=str, default="spk2.wav", help="Speaker 2 audio file path"
-    )
+    parser.add_argument("--spk1_path", type=str, default="spk1.wav", help="Speaker 1 audio file path")
+    parser.add_argument("--spk2_path", type=str, default="spk2.wav", help="Speaker 2 audio file path")
     main(parser.parse_args())
