@@ -17,6 +17,8 @@ from matplotlib.axes import Axes
 from scipy.cluster.hierarchy import leaves_list, linkage
 from scipy.fft import rfft, rfftfreq
 
+from utils import trim_to_shortest
+
 
 @torch.inference_mode()
 def main(args: Namespace):
@@ -45,6 +47,15 @@ def main(args: Namespace):
     spk1 = librosa.load(args.spk1_path, sr=sample_rate)[0]
     spk2 = librosa.load(args.spk2_path, sr=sample_rate)[0]
 
+    mixture, sr = torchaudio.load(args.mixture_path)
+    mixture = torchaudio.functional.resample(
+        mixture, orig_freq=sr, new_freq=sample_rate
+    )
+
+    # Resampling can leave the three signals a few samples apart, which breaks the
+    # element-wise comparison of their encoder outputs below.
+    spk1, spk2, mixture = trim_to_shortest(spk1, spk2, mixture)
+
     sns.lineplot(
         x=np.arange(len(spk1)) / sample_rate,
         y=spk1,
@@ -64,10 +75,6 @@ def main(args: Namespace):
     ax.set_title("Mixture waveform")
     ax.get_figure().savefig("mixture_waveform.png", bbox_inches="tight")
 
-    mixture, sr = torchaudio.load(args.mixture_path)
-    mixture = torchaudio.functional.resample(
-        mixture, orig_freq=sr, new_freq=sample_rate
-    )
     encoder_output = model.forward_encoder(mixture.unsqueeze(1).to(device))
     encoder_output_numpy = encoder_output.squeeze().cpu().numpy()
 
