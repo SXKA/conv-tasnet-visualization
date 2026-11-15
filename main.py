@@ -17,7 +17,7 @@ from matplotlib.axes import Axes
 from scipy.cluster.hierarchy import leaves_list, linkage
 from scipy.fft import rfft, rfftfreq
 
-from utils import trim_to_shortest
+from utils import to_mono, trim_to_shortest
 
 
 @torch.inference_mode()
@@ -48,6 +48,9 @@ def main(args: Namespace):
     spk2 = librosa.load(args.spk2_path, sr=sample_rate)[0]
 
     mixture, sr = torchaudio.load(args.mixture_path)
+    # A stereo file has shape (2, time) and was fed to the model as a batch of
+    # two mixtures; the speaker references are mono, so downmix it too.
+    mixture = to_mono(mixture)
     mixture = torchaudio.functional.resample(
         mixture, orig_freq=sr, new_freq=sample_rate
     )
