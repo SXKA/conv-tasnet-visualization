@@ -1,0 +1,43 @@
+[project]
+name = "conv-tasnet-visualization"
+version = "0.1.0"
+description = "Visualization of Conv-TasNet encoder, masks and decoder."
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "asteroid",
+    "librosa",
+    "matplotlib",
+    "numpy",
+    "scipy",
+    "seaborn",
+    "seaborn-image",
+    "soundfile",
+    "torch",
+    "torchaudio",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "ruff",
+]
+
+# The tests stub the deep-learning stack, so CI installs only this group.
+test = [
+    "numpy",
+    "pytest",
+]
+
+[tool.uv]
+# Scripts, not an installable package.
+package = false
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
