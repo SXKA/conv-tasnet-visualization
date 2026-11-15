@@ -16,3 +16,25 @@ def trim_to_shortest(*signals):
     length = min(signal.shape[-1] for signal in signals)
 
     return tuple(signal[..., :length] for signal in signals)
+
+
+def to_mono(signal):
+    """Average the channels of a (channels, time) signal into (1, time).
+
+    Works for NumPy arrays and PyTorch tensors.
+
+    Args:
+        signal: Signal of shape (channels, time).
+
+    Returns:
+        Signal of shape (1, time).
+    """
+
+    if signal.shape[0] == 1:
+        return signal
+
+    # torch.Tensor.mean takes keepdim, numpy's takes keepdims.
+    if hasattr(signal, "dim"):
+        return signal.mean(dim=0, keepdim=True)
+
+    return signal.mean(axis=0, keepdims=True)
