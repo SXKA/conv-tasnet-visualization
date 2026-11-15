@@ -5,8 +5,12 @@ A implementation of [Conv-TasNet](https://arxiv.org/abs/1809.07454) visualizatio
 
 The images of visualization are produced with [JorisCos/ConvTasNet_Libri2Mix_sepclean_8k](https://huggingface.co/JorisCos/ConvTasNet_Libri2Mix_sepclean_8k).
 ## Usage
+Install the dependencies with [uv](https://docs.astral.sh/uv/):
 ```bash
-python main.py \
+uv sync
+```
+```bash
+uv run python main.py \
   --model_path path/to/model \
   --mixture_path path/to/mixture_audio \
   --spk1_path path/to/spk1_audio \
