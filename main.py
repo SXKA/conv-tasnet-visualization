@@ -1,5 +1,4 @@
 import argparse
-
 from argparse import Namespace
 
 import librosa
@@ -9,9 +8,8 @@ import seaborn_image as isns
 import soundfile as sf
 import torch
 import torchaudio
-
-from asteroid.models import ConvTasNet
 from asteroid.losses.sdr import singlesrc_neg_sisdr
+from asteroid.models import ConvTasNet
 from asteroid.utils.torch_utils import pad_x_to_y
 from matplotlib.axes import Axes
 from scipy.cluster.hierarchy import leaves_list, linkage
